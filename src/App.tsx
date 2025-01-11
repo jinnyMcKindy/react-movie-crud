@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { MovieList } from './components/movie-list/MovieList';
-import { MovieDetails } from './components/movie-details/MovieDetails';
+import { MovieList } from './components/MovieList/MovieList';
+import { MovieDetails } from './components/MovieDetails/MovieDetails';
 
 const App: React.FC = () => {
   return (
