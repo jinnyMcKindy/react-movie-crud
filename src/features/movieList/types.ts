@@ -3,13 +3,13 @@ export type Movie = {
     title: string;
     poster_path: string;
     overview: string;
-  };
+};
   
 export type PaginatedResponse = {
     results: Movie[];
     total_pages: number;
     page: number;
-  };
+};
 
 export interface MovieState {
     movies: Movie[];
@@ -27,4 +27,4 @@ export interface UseSearchReturn {
 export interface FetchMoviesParams {
     page: number;
     query: string;
-}
+};

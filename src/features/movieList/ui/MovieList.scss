@@ -2,11 +2,11 @@
 .movie-list {
   margin: 20px;
   text-align: center;
-  
+
   &__title {
     color: $secondary-color;
   }
-  
+
   &__search-box {
     padding: 10px;
     width: 80%;
@@ -16,6 +16,10 @@
     background-color: $background-color;
     border-radius: 4px;
     font-size: 16px;
+  }
+
+  &__content {
+    min-height: 60vh;
   }
   
   &__movies {
@@ -75,7 +79,7 @@
     }
   }
 }
-  /* Mobile Adjustments */
+
   @media (max-width: 768px) {
     .movie-list__movies {
       grid-template-columns: repeat(2, 1fr);
