@@ -1,0 +1,64 @@
+@use '../../assets/styles/variables' as *;
+
+.movie-details {
+  padding: 20px;
+  text-align: left; 
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 20px;
+  align-items: start;
+  justify-content: center;
+  max-width: 400px;
+
+  &__title {
+    color: $secondary-color;
+  }
+
+  &__image {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 20px 0;
+    color: $text-color;
+  }
+
+  &__back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: $primary-color;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: $highlight-color;
+    }
+  }
+
+  @media (min-width: 768px) {
+    max-width: initial;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+    text-align: right;
+
+    &__image {
+      grid-column: 1; 
+    }
+
+    &__content {
+      grid-column: 2; 
+      max-width: 600px;
+      margin-left: 20px;
+    }
+
+    &__back-link {
+      margin-top: 40px;
+    }
+  }
+}
