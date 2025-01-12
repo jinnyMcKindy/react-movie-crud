@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Movie, API_KEY, API_URL } from '../../shared/types';
+import { Movie } from '../../shared/types';
+import { API_KEY, API_URL } from '../../shared/apiConstants';
 import './MovieDetails.scss';
 
-export const MovieDetails: React.FC = () => {
+const MovieDetails: React.FC = () => {
     const [movie, setMovie] = useState<Movie | null>(null);
     const { id } = useParams<{ id: string }>();
   
@@ -37,3 +38,5 @@ export const MovieDetails: React.FC = () => {
       </div>
     );
   };
+
+  export default MovieDetails;
