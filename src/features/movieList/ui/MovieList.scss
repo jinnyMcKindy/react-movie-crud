@@ -2,11 +2,11 @@
 .movie-list {
   margin: 20px;
   text-align: center;
-  
+
   &__title {
     color: $secondary-color;
   }
-  
+
   &__search-box {
     padding: 10px;
     width: 80%;
@@ -16,6 +16,10 @@
     background-color: $background-color;
     border-radius: 4px;
     font-size: 16px;
+  }
+
+  &__content {
+    min-height: 60vh;
   }
   
   &__movies {
@@ -32,10 +36,10 @@
     text-decoration: none;
     color: $text-color;
   }
-  &__img {
+  &__thumbnail {
     display: block;
     width: 100%;
-    height: auto;
+    height: 200px;
     border-radius: 8px;
     box-shadow: $box-shadow;
     transition: transform 0.2s ease-in-out;
@@ -75,7 +79,7 @@
     }
   }
 }
-  /* Mobile Adjustments */
+
   @media (max-width: 768px) {
     .movie-list__movies {
       grid-template-columns: repeat(2, 1fr);

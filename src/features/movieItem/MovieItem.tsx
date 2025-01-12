@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import MovieThumbnail from '../../shared/components/movieThumbnail';
 interface MovieItemProps {
   movie: {
     id: number;
@@ -10,10 +10,10 @@ interface MovieItemProps {
 
 const MovieItem: React.FC<MovieItemProps> = ({ movie }) => (
   <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-list__movie-item">
-    <img
-      src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-      alt={movie.title}
-      className="movie-list__img"
+    <MovieThumbnail 
+      imageUrl={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
+      title={movie.title}
+      className='movie-list__thumbnail'
     />
     <p className="movie-list__movie-title">{movie.title}</p>
   </Link>

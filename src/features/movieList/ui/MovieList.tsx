@@ -1,12 +1,13 @@
 // src/pages/MovieList/MovieList.tsx
 import React, { useState } from 'react';
-import MovieItem  from '../../movieItem/MovieItem';
-import Pagination  from '../../pagination/Pagination';
-import SearchInput  from '../../searchInput/SearchInput';
+import MovieItem  from '../../movieItem';
+import Pagination  from '../../pagination';
+import SearchInput  from '../../searchInput';
 import useSearch from '../hooks/useSearch';
 import useMovies from '../hooks/useMovies';
-import { Movie } from '../types';
-
+import Loading from '../../../shared/components/loading';
+import Error from '../../../shared/components/error';
+import { Movie } from '../../../shared/types';
 import './MovieList.scss';
 
 const MovieList: React.FC = () => {
@@ -18,13 +19,18 @@ const MovieList: React.FC = () => {
     <div className="movie-list">
       <h1 className="movie-list__title">Movie List</h1>
       <SearchInput query={query} setQuery={setQuery} />
-      <div className="movie-list__movies">
+      <div className="movie-list__content">
         {loading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p>{error}</p>
+            <Loading />
+          ) : error ? (
+            <Error message={error} />
         ) : (
-          movies.map((movie: Movie) => <MovieItem key={movie.id} movie={movie} />)
+          <>
+            {movies.length === 0 && <p>No movies found</p>}
+            <div className="movie-list__movies">
+              {movies.map((movie: Movie) => <MovieItem key={movie.id} movie={movie} />)}
+            </div>
+          </>
         )}
       </div>
       <Pagination
