@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Movie } from '../../shared/types';
 import { API_KEY, API_URL } from '../../shared/apiConstants';
+import MovieThumbnail from '../../shared/components/movieThumbnail';
 import './MovieDetails.scss';
 
 const MovieDetails: React.FC = () => {
@@ -23,13 +24,11 @@ const MovieDetails: React.FC = () => {
   
     return (
       <div className="movie-details">
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-            className="movie-details__image"
-          />
-        </div>
+        <MovieThumbnail 
+          imageUrl={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
+          title={movie.title} 
+          className="movie-details__thumbnail"
+        />
         <div className="movie-details__content">
           <h1 className="movie-details__title">{movie.title}</h1>
           <p className="movie-details__description">{movie.overview}</p>

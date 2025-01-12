@@ -4,9 +4,8 @@
   padding: 20px;
   text-align: left; 
   display: grid;
-  grid-template-columns: 1fr; 
+  align-items: center;
   gap: 20px;
-  align-items: start;
   justify-content: center;
   max-width: 400px;
 
@@ -14,8 +13,8 @@
     color: $secondary-color;
   }
 
-  &__image {
-    max-width: 400px;
+  &__thumbnail {
+    width: 250px;
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: $box-shadow;
@@ -43,7 +42,6 @@
 
   @media (min-width: 768px) {
     max-width: initial;
-    grid-template-columns: 1fr 1fr; 
     gap: 40px;
     text-align: right;
 
