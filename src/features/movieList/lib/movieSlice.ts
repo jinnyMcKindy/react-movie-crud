@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction, ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { API_KEY, API_URL } from '../../../shared/apiConstants';
 import { PaginatedResponse, MovieState, FetchMoviesParams } from '../types';
 
@@ -9,8 +9,10 @@ const initialState: MovieState = {
   error: null ,
 };
 
+const FETCH_MOVIES = "movies/fetchMovies";
+
 export const fetchMovies = createAsyncThunk<PaginatedResponse, FetchMoviesParams>(
-  'movies/fetchMovies',
+  FETCH_MOVIES,
   async (params: { page: number, query: string }) => {
     const { page, query } = params;
     const endpoint = query
@@ -27,7 +29,7 @@ const movieSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: (builder: ActionReducerMapBuilder<MovieState>) => {
     builder
       .addCase(fetchMovies.pending, (state: MovieState) => {
         state.loading = true;

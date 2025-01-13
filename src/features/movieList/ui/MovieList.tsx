@@ -1,4 +1,3 @@
-// src/pages/MovieList/MovieList.tsx
 import React, { useState } from 'react';
 import MovieItem  from '../../movieItem';
 import Pagination  from '../../pagination';
