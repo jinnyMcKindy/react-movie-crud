@@ -1,3 +1,3 @@
-import MovieItem from './MovieItem';
+import MovieItem from './ui/MovieItem';
 
 export default MovieItem;
