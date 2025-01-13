@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Movie } from '../../shared/types';
 import { API_KEY, API_URL } from '../../shared/apiConstants';
 import MovieThumbnail from '../../shared/components/movieThumbnail';
+import Loading from '../../shared/components/loading';
 import './MovieDetails.scss';
 
 const MovieDetails: React.FC = () => {
@@ -19,7 +20,7 @@ const MovieDetails: React.FC = () => {
     }, [id]);
   
     if (!movie) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
   
     return (
