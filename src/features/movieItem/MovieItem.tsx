@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import MovieThumbnail from '../../shared/components/movieThumbnail';
+import MovieThumbnail from '@/shared/components/movieThumbnail';
 interface MovieItemProps {
   movie: {
     id: number;

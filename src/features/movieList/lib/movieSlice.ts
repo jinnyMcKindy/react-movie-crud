@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction, ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { API_KEY, API_URL } from '../../../shared/apiConstants';
+import { API_KEY, API_URL } from '@/shared/apiConstants';
 import { PaginatedResponse, MovieState, FetchMoviesParams } from '../types';
 
 const initialState: MovieState = {
