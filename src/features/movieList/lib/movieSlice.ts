@@ -16,9 +16,10 @@ const trimAndEscapeParam = (param: string): string => {
   return encodeURIComponent(trimmedQuery);
 };
 
-export const fetchMovies = createAsyncThunk<PaginatedResponse, FetchMoviesParams>(
+export const fetchMovies = createAsyncThunk<PaginatedResponse, FetchMoviesParams, { rejectValue: string }>(
   FETCH_MOVIES,
-  async (params: FetchMoviesParams) => {
+  async (params: FetchMoviesParams, { rejectWithValue } ) => {
+    try {
     const { page, query } = params;
     const escapedQuery = trimAndEscapeParam(query);
     const escapedPage = trimAndEscapeParam(page.toString());
@@ -27,8 +28,10 @@ export const fetchMovies = createAsyncThunk<PaginatedResponse, FetchMoviesParams
       : `${API_URL}/movie/popular?api_key=${API_KEY}&page=${escapedPage}`;
 
     const response = await fetch(endpoint);
-    const data: PaginatedResponse = await response.json();
-    return data;
+    return (await response.json()) as PaginatedResponse;
+    } catch (error: unknown) {
+      return rejectWithValue((error as Error).message);
+    }
   }
 );
 
@@ -46,9 +49,9 @@ const movieSlice = createSlice({
         state.movies = action.payload.results;
         state.totalPages = action.payload.total_pages;
       })
-      .addCase(fetchMovies.rejected, (state: MovieState, action) => {
+      .addCase(fetchMovies.rejected, (state: MovieState, action: PayloadAction<string | undefined>) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to fetch movies';
+        state.error = action.payload ?? 'Failed to fetch movies';
       });
   },
 });
