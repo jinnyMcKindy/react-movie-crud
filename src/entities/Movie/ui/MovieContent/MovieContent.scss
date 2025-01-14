@@ -1,6 +1,6 @@
 @use '@/assets/styles/variables' as *;
 
-.movie-details {
+.movie-content {
   padding: 20px;
   text-align: left; 
   display: grid;
@@ -14,7 +14,8 @@
   }
 
   &__thumbnail {
-    width: 250px;
+    max-width: 350px;
+    width: 100%;
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: $box-shadow;
