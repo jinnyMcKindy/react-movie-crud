@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.scss';
-import MovieList  from './features/movieList';
-import MovieDetails from './features/movieDetails';
+import { Movies } from '@/pages/Movies';
+import { Movie } from '@/pages/Movie';
 
 const App: React.FC = () => {
   return (
     <Router>
        <div className="app-container">
         <Routes>
-          <Route path="/" element={<MovieList />} />
-          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/" element={<Movies />} />
+          <Route path="/movie/:id" element={<Movie />} />
         </Routes>
       </div>
     </Router>
