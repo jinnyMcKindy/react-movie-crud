@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction, ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { API_KEY, API_URL } from '../../../shared/apiConstants';
+import { API_KEY, API_URL } from '@/shared/apiConstants';
 import { PaginatedResponse, MovieState, FetchMoviesParams } from '../types';
 
 const initialState: MovieState = {
@@ -11,13 +11,20 @@ const initialState: MovieState = {
 
 const FETCH_MOVIES = "movies/fetchMovies";
 
+const trimAndEscapeParam = (param: string): string => {
+  const trimmedQuery = param.trim();
+  return encodeURIComponent(trimmedQuery);
+};
+
 export const fetchMovies = createAsyncThunk<PaginatedResponse, FetchMoviesParams>(
   FETCH_MOVIES,
-  async (params: { page: number, query: string }) => {
+  async (params: FetchMoviesParams) => {
     const { page, query } = params;
-    const endpoint = query
-      ? `${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`
-      : `${API_URL}/movie/popular?api_key=${API_KEY}&page=${page}`;
+    const escapedQuery = trimAndEscapeParam(query);
+    const escapedPage = trimAndEscapeParam(page.toString());
+    const endpoint = escapedQuery
+      ? `${API_URL}/search/movie?api_key=${API_KEY}&query=${escapedQuery}&page=${escapedPage}`
+      : `${API_URL}/movie/popular?api_key=${API_KEY}&page=${escapedPage}`;
 
     const response = await fetch(endpoint);
     const data: PaginatedResponse = await response.json();

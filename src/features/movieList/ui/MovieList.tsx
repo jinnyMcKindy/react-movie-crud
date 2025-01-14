@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import MovieItem  from '../../movieItem';
-import Pagination  from '../../pagination';
-import SearchInput  from '../../searchInput';
+import MovieItem  from '@/features/movieItem';
+import Pagination  from '@/features/pagination';
+import SearchInput  from '@/features/searchInput';
 import useSearch from '../hooks/useSearch';
 import useMovies from '../hooks/useMovies';
-import Loading from '../../../shared/components/loading';
-import Error from '../../../shared/components/error';
-import { Movie } from '../../../shared/types';
+import Loading from '@/shared/components/loading';
+import Error from '@/shared/components/error';
+import { Movie } from '@/shared/types';
 import './MovieList.scss';
 
 const MovieList: React.FC = () => {

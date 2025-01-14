@@ -1,13 +1,13 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../../../app/store';
+import { AppDispatch } from '@/app/store';
 import { useEffect } from 'react';
 import { fetchMovies } from '../lib/movieSlice';
-import { RootState } from '../../../app/store';
+import { RootState } from '@/app/store';
 import { MovieState } from '../types';
 
 const useMovies = (currentPage: number, debouncedQuery: string): MovieState => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch: AppDispatch = useDispatch<AppDispatch>();
   const { movies, totalPages, loading, error } = useSelector((state: RootState) => state.movies);
 
   useEffect(() => {
