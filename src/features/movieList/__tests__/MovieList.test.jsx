@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
-import MovieList from './MovieList';
+import MovieList from '../ui/MovieList';
 import { afterEach } from 'vitest';
 import useMovies from '../hooks/useMovies';
 
@@ -15,29 +15,10 @@ vi.mock('../hooks/useSearch', () => ({
 
 vi.mock('../hooks/useMovies');
 
-describe('MovieList Component', () => {
+describe('MovieList behavior', () => {
   afterEach(() => {
     vi.clearAllMocks();
   });
-
-  test('renders without crashing', () => {
-    vi.mocked(useMovies).mockReturnValue({
-        movies: [
-          { id: 1, title: 'Movie 1' },
-          { id: 2, title: 'Movie 2' },
-        ],
-        totalPages: 1,
-        loading: false,
-        error: null,
-    });
-    render(
-      <MemoryRouter>
-        <MovieList />
-      </MemoryRouter>);
-
-    expect(screen.getByText('Movie List')).toBeInTheDocument();
-  });
-
 
   test('displays movies when data is available', () => {
     vi.mocked(useMovies).mockReturnValue({

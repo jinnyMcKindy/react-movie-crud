@@ -1,3 +1,3 @@
-import MovieThumbnail from './MovieThumbnail';
+import MovieThumbnail from './ui/MovieThumbnail';
 
 export default MovieThumbnail;

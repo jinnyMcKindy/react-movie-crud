@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './MovieThumbnail.scss';
-import fallbackUrl from '../../../assets/video_placeholder.png';
+import fallbackUrl from '@/assets/video_placeholder.png';
 
 interface MovieThumbnailProps {
   imageUrl: string;
