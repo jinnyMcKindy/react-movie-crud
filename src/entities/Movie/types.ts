@@ -11,4 +11,13 @@ export interface MovieThumbnailProps {
   title: string;
   className: string;
 }
+
+export interface MovieItemProps {
+  movie: {
+    id: number;
+    poster_path: string;
+    title: string;
+  };
+}
+
   

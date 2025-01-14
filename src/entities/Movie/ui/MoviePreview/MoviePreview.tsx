@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom';
 import { MovieThumbnail } from '@/entities/Movie';
-interface MovieItemProps {
-  movie: {
-    id: number;
-    poster_path: string;
-    title: string;
-  };
-}
+import { MovieItemProps } from '@/entities/Movie/types';
 
-const MovieItem: React.FC<MovieItemProps> = ({ movie }) => (
+const MoviePreview: React.FC<MovieItemProps> = ({ movie }) => (
   <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-list__movie-item">
     <MovieThumbnail 
       imageUrl={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
@@ -19,4 +13,4 @@ const MovieItem: React.FC<MovieItemProps> = ({ movie }) => (
   </Link>
 );
 
-export default MovieItem;
+export default MoviePreview;
