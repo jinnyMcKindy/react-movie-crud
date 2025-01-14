@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MovieItem  from '@/features/movieItem';
+import MoviePreview from '@/entities/Movie/ui/MoviePreview/MoviePreview';
 import Pagination  from '@/features/pagination';
 import SearchInput  from '@/features/searchInput';
 import useSearch from '../hooks/useSearch';
@@ -27,7 +27,7 @@ const MovieList: React.FC = () => {
           <>
             {movies.length === 0 && <p>No movies found</p>}
             <div className="movie-list__movies">
-              {movies.map((movie: Movie) => <MovieItem key={movie.id} movie={movie} />)}
+              {movies.map((movie: Movie) => <MoviePreview key={movie.id} movie={movie} />)}
             </div>
           </>
         )}

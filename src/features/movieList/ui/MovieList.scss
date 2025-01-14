@@ -38,6 +38,7 @@
   }
   &__thumbnail {
     display: block;
+    width: 100%;
     border-radius: 8px;
     box-shadow: $box-shadow;
     transition: transform 0.2s ease-in-out;
