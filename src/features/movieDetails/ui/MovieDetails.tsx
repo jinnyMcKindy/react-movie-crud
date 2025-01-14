@@ -1,26 +1,11 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovieDetails } from '../lib/MovieDetailsSlice';
-import { RootState, AppDispatch } from '@/app/store';
+import React from 'react';
 import { MovieContent, MovieThumbnail } from '@/entities/Movie';
 import Loading from '@/shared/components/loading';
 import Error from '@/shared/components/error';
-
+import useMovieDetails from '../hooks/useMovieDetails';
 
 const MovieDetails: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const dispatch: AppDispatch = useDispatch();
-
-  const { data: movie, loading, error } = useSelector(
-    (state: RootState) => state.movie
-  );
-
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchMovieDetails(id));
-    }
-  }, [id, dispatch]);
+  const { movie, loading, error } = useMovieDetails();
 
   return loading ? (
     <Loading />
@@ -29,7 +14,7 @@ const MovieDetails: React.FC = () => {
   ) : (
     <>
       {movie ? (
-          <MovieContent movie={movie} Thumbnail={MovieThumbnail} />
+        <MovieContent movie={movie} Thumbnail={MovieThumbnail} />
       ) : (
         <p>No movie data</p>
       )}
