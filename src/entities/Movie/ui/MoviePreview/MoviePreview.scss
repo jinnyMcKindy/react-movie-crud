@@ -1,0 +1,20 @@
+@use '@/assets/styles/variables.scss' as *;
+
+.movie-preview {
+
+  &__thumbnail {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.05);
+    }
+ }
+
+  &__title {
+    text-decoration: none;
+    color: $text-color;
+  }
+}
