@@ -15,12 +15,27 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
   const [imgSrc, setImgSrc] = useState(posterPath);
   
   return (
-    <img
-      src={buildImageURL(imgSrc, 500)}
-      alt={title}
-      className={className}
-      onError={() => setImgSrc(fallbackUrl)}
-    />
+    <picture>
+      <source
+        media="(max-width: 480px)"
+        srcSet={buildImageURL(imgSrc, 500)}
+      />
+      <source
+        media="(max-width: 768px)"
+        srcSet={buildImageURL(imgSrc, 400)}
+      />
+      <source
+        media="(max-width: 1200px)"
+        srcSet={buildImageURL(imgSrc, 200)}
+      />
+      <img
+        src={buildImageURL(imgSrc, 300)}
+        alt={title}
+        className={className}
+        onError={() => setImgSrc(fallbackUrl)}
+      />
+    </picture>
+
   );
 };
 
