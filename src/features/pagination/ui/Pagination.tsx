@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 interface PaginationProps {
   currentPage: number;
@@ -7,10 +7,19 @@ interface PaginationProps {
 }
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, setCurrentPage }) => {
+  
+  const goToPreviousPage = useCallback(() => {
+    setCurrentPage((prev: number) => Math.max(prev - 1, 1));
+  }, [setCurrentPage]);
+
+  const goToNextPage = useCallback(() => {
+    setCurrentPage((prev: number) => Math.min(prev + 1, totalPages));
+  }, [setCurrentPage, totalPages]);
+
   return (
     <div className="movie-list__pagination">
       <button
-        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+        onClick={goToPreviousPage}
         disabled={currentPage === 1}
         className="movie-list__pagination-button"
       >
@@ -20,7 +29,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, setCur
         Page {currentPage} of {totalPages}
       </span>
       <button
-        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+        onClick={goToNextPage}
         disabled={currentPage === totalPages}
         className="movie-list__pagination-button"
       >

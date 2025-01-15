@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import MoviePreview from '@/entities/Movie/ui/MoviePreview/MoviePreview';
 import Pagination  from '@/features/pagination';
 import SearchInput  from '@/features/searchInput';
@@ -9,10 +9,15 @@ import Error from '@/shared/components/error';
 import { Movie } from '@/shared/types';
 import './MovieList.scss';
 
-const MovieList: React.FC = () => {
+const MovieList: React.FC = React.memo(() => {
   const [currentPage, setCurrentPage] = useState(1);
   const { query, debouncedQuery, setQuery } = useSearch('');
   const { movies, totalPages, loading, error } = useMovies(currentPage, debouncedQuery);
+  const moviePreviews = useMemo(() => {
+    return movies.map((movie: Movie) => (
+      <MoviePreview key={movie.id} movie={movie} />
+    ));
+  }, [movies]);
 
   return (
     <div className="movie-list">
@@ -27,7 +32,7 @@ const MovieList: React.FC = () => {
           <>
             {movies.length === 0 && <p>No movies found</p>}
             <div className="movie-list__movies">
-              {movies.map((movie: Movie) => <MoviePreview key={movie.id} movie={movie} />)}
+              {moviePreviews}
             </div>
           </>
         )}
@@ -39,5 +44,5 @@ const MovieList: React.FC = () => {
       />
     </div>
   );
-};
+});
 export default MovieList;
