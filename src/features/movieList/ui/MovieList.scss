@@ -1,11 +1,8 @@
 @use '@/assets/styles/variables.scss' as *;
+
 .movie-list {
   margin: 20px;
   text-align: center;
-
-  &__title {
-    color: $secondary-color;
-  }
 
   &__search-box {
     padding: 10px;
@@ -21,7 +18,7 @@
   &__content {
     min-height: 60vh;
   }
-  
+
   &__movies {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -31,23 +28,9 @@
     max-width: 1200px;
     margin: 0 auto;
   }
-  
-  &__movie-item {
-    text-decoration: none;
-    color: $text-color;
-  }
-  &__thumbnail {
-    display: block;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: $box-shadow;
-    transition: transform 0.2s ease-in-out;
-    &:hover{
-      transform: scale(1.05);
-    }
-  }
 
   &__title {
+    color: $secondary-color;
     margin: 10px 0 0;
     font-size: 14px;
     font-weight: bold;
@@ -55,7 +38,7 @@
 
   &__pagination {
     margin-top: 20px;
-  
+
     &-button {
       background-color: $button-bg;
       color: #fff;
@@ -65,13 +48,13 @@
       margin: 0 10px;
       font-size: 16px;
       cursor: pointer;
-  
+
       &:disabled {
         background-color: $button-bg-disabled;
         cursor: not-allowed;
       }
     }
-  
+
     &-info {
       font-size: 16px;
       color: $text-color;
@@ -79,14 +62,14 @@
   }
 }
 
-  @media (max-width: 768px) {
-    .movie-list__movies {
-      grid-template-columns: repeat(2, 1fr);
-    }
+@media (max-width: 768px) {
+  .movie-list__movies {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (max-width: 480px) {
-    .movie-list__movies {
-        grid-template-columns: 1fr;
-      }
-    }
+}
+
+@media (max-width: 480px) {
+  .movie-list__movies {
+    grid-template-columns: 1fr;
+  }
+}
