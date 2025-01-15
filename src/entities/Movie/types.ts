@@ -7,7 +7,7 @@ export interface MovieContentProps {
 }
 
 export interface MovieThumbnailProps {
-  imageUrl: string;
+  posterPath: string;
   title: string;
   className: string;
 }
