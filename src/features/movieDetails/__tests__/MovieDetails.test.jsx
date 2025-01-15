@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import MovieDetails from '../ui/MovieDetails';
 import useMovieDetails from '../hooks/useMovieDetails';
-import { IMAGE_URL } from '@/shared/apiConstants';
+import { buildImageURL } from '@/shared/utils/buildImageURL';
 
 vi.mock('../hooks/useMovieDetails');
 
@@ -46,7 +46,7 @@ describe('MovieDetails Component', () => {
       overview: 'Sample overview',
       poster_path: '/sample-poster.jpg',
     };
-    const imgUrl = `${IMAGE_URL}w500${movie.poster_path}`;
+    const imgUrl = movie.poster_path;
   
     vi.mocked(useMovieDetails).mockReturnValue({
       movie,

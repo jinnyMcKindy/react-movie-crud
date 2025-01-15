@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import './MovieThumbnail.scss';
 import fallbackUrl from '@/assets/video_placeholder.png';
 import { MovieThumbnailProps } from '@/entities/Movie/types';
-import { IMAGE_URL } from '@/shared/apiConstants';
+import { buildImageURL } from '@/shared/utils/buildImageURL';
 
-const buildImageURL = (imageUrl: string, size: number) => {
-  return  `${IMAGE_URL}w${size}${imageUrl}`;
-}
 const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
   posterPath,
   title,
@@ -29,7 +26,7 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
         srcSet={buildImageURL(imgSrc, 200)}
       />
       <img
-        src={buildImageURL(imgSrc, 300)}
+        src={imgSrc}
         alt={title}
         className={className}
         onError={() => setImgSrc(fallbackUrl)}
