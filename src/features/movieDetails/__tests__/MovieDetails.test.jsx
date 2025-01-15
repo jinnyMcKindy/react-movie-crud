@@ -46,7 +46,7 @@ describe('MovieDetails Component', () => {
       overview: 'Sample overview',
       poster_path: '/sample-poster.jpg',
     };
-    const imgUrl = movie.poster_path;
+    const imgUrl = buildImageURL(movie.poster_path, 300);
   
     vi.mocked(useMovieDetails).mockReturnValue({
       movie,

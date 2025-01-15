@@ -10,7 +10,11 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
   className,
 }) => {
   const [imgSrc, setImgSrc] = useState(posterPath);
-  
+  const [error, onError] = useState(false);
+
+  const setSrc = () => {
+    return error ? fallbackUrl : buildImageURL(imgSrc, 300);
+  }
   return (
     <picture>
       <source
@@ -26,10 +30,12 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
         srcSet={buildImageURL(imgSrc, 200)}
       />
       <img
-        src={imgSrc}
+        src={setSrc()}
         alt={title}
         className={className}
-        onError={() => setImgSrc(fallbackUrl)}
+        onError={() => {
+          onError(true);
+        }}
       />
     </picture>
 
