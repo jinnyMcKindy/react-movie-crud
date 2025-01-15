@@ -13,14 +13,14 @@ describe('MovieThumbnail', () => {
     render(<MovieThumbnail posterPath={validImageUrl} title={title} className="thumbnail" />);
     const imgElement = screen.getByAltText(title);
     expect(imgElement).toBeInTheDocument();
-    expect(imgElement).toHaveAttribute('src', validImageUrl);
+    expect(imgElement).toHaveAttribute('src', buildImageURL(validImageUrl, 300));
   });
 
   test('displays fallback image on error', () => {
     render(<MovieThumbnail posterPath={invalidImageUrl} title={title} className="thumbnail" />);
     const imgElement = screen.getByAltText(title);
     expect(imgElement).toBeInTheDocument();
-    expect(imgElement).toHaveAttribute('src', invalidImageUrl);
+    expect(imgElement).toHaveAttribute('src', buildImageURL(invalidImageUrl, 300));
 
     fireEvent.error(imgElement);
 
