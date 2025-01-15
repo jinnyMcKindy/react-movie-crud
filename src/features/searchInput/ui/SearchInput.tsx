@@ -5,7 +5,7 @@ interface SearchInputProps {
   setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ query, setQuery }) => {
+const SearchInput: React.FC<SearchInputProps> = React.memo(({ query, setQuery }) => {
 
   const handleChange = useCallback( (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -21,6 +21,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ query, setQuery }) => {
       className="movie-list__search-box"
     />
   );
-};
+});
 
 export default SearchInput;
