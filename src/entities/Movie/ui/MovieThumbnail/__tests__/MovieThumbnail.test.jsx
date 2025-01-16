@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import MovieThumbnail from '../MovieThumbnail';
-import fallbackUrl from '@/assets/video_placeholder.png';
+import fallbackUrl from '@/shared/ui/video_placeholder.png';
 import { fireEvent } from '@testing-library/react';
 import { buildImageURL } from '@/shared/utils/buildImageURL';
 

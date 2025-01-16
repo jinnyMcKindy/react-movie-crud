@@ -1,7 +1,7 @@
 // src/app/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import movieListReducer from '@/features/movieList/lib/movieSlice';
-import movieDetailsReducer from '@/features/movieDetails/lib/MovieDetailsSlice';
+import movieDetailsReducer from '@/features/movieDetails/lib/movieDetailsSlice';
 
 export const store = configureStore({
   reducer: {
