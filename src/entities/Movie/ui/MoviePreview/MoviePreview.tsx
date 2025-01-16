@@ -10,7 +10,9 @@ const MoviePreview: React.FC<MovieItemProps> = ({ movie }) => (
       title={movie.title}
       className='movie-preview__thumbnail'
     />
-    <p className="movie-preview__title">{movie.title}</p>
+    <p className="movie-preview__info">
+      <span className="movie-preview__title">{movie.title}</span>
+    </p>
   </Link>
 );
 

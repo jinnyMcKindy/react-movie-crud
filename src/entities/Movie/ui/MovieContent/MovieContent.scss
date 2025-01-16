@@ -1,21 +1,20 @@
 @use '@/shared/ui/styles/variables' as *;
 
 .movie-content {
-  padding: 20px;
-  text-align: left; 
+  position: relative;
   display: grid;
   align-items: center;
-  gap: 20px;
   justify-content: center;
-  max-width: 400px;
+  gap: 20px;
+  padding: 20px;
+  text-align: left;
 
   &__title {
     color: $secondary-color;
   }
 
   &__thumbnail {
-    max-width: 350px;
-    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: $box-shadow;
@@ -26,6 +25,29 @@
     line-height: 1.5;
     margin: 20px 0;
     color: $text-color;
+  }
+
+  &__details {
+    font-size: 1rem;
+    color: $text-color-muted;
+    line-height: 1.5;
+
+    &__item {
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        font-weight: bold;
+        color: $text-color;
+      }
+    }
+  }
+
+  &__star {
+    color: $yellow;
   }
 
   &__back-link {
@@ -45,10 +67,6 @@
     max-width: initial;
     gap: 40px;
     text-align: right;
-
-    &__image {
-      grid-column: 1; 
-    }
 
     &__content {
       grid-column: 2; 

@@ -1,6 +1,24 @@
 @use '@/shared/ui/styles/variables.scss' as *;
 
 .movie-preview {
+  display: block;
+  margin: 1rem;
+  text-align: center;
+  font-family: $font-family;
+
+  &__movie-item {
+    text-decoration: none;
+    background-color: $background-color-light;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: $box-shadow-hover;
+    }
+  }
 
   &__thumbnail {
     display: block;
@@ -8,13 +26,19 @@
     border-radius: 8px;
     box-shadow: $box-shadow;
     transition: transform 0.2s ease-in-out;
+
     &:hover {
       transform: scale(1.05);
     }
- }
+  }
 
-  &__title {
-    text-decoration: none;
+  &__info {
     color: $text-color;
+    margin-top: 1rem;
+
+    &__title {
+      font-size: $font-size-title;
+      font-weight: $font-weight-bold;
+    }
   }
 }
