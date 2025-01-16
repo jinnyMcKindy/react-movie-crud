@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { MovieThumbnail } from '@/entities/Movie';
 import { MovieItemProps } from '@/entities/Movie/types';
+import { Movie } from '@/shared/types';
 import './MoviePreview.scss';
 
-const MoviePreview: React.FC<MovieItemProps> = ({ movie }) => (
+const MoviePreview: React.FC<MovieItemProps> = ({ movie }: { movie: Movie}) => (
   <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-preview__movie-item">
     <MovieThumbnail 
       posterPath={movie.poster_path} 

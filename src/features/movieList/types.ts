@@ -1,9 +1,4 @@
-export type Movie = {
-    id: number;
-    title: string;
-    poster_path: string;
-    overview: string;
-};
+import { Movie } from '@/shared/types';
   
 export type PaginatedResponse = {
     results: Movie[];
