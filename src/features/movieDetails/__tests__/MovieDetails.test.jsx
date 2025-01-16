@@ -7,6 +7,7 @@ import useMovieDetails from '../hooks/useMovieDetails';
 import { buildImageURL } from '@/shared/utils/buildImageURL';
 
 vi.mock('../hooks/useMovieDetails');
+const imageSize = 300;
 
 describe('MovieDetails Component', () => {
 
@@ -46,7 +47,7 @@ describe('MovieDetails Component', () => {
       overview: 'Sample overview',
       poster_path: '/sample-poster.jpg',
     };
-    const imgUrl = buildImageURL(movie.poster_path, 200);
+    const imgUrl = buildImageURL(movie.poster_path, imageSize);
   
     vi.mocked(useMovieDetails).mockReturnValue({
       movie,

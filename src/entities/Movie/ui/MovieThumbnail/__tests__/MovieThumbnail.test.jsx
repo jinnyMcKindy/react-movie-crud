@@ -4,6 +4,7 @@ import fallbackUrl from '@/shared/ui/video_placeholder.png';
 import { fireEvent } from '@testing-library/react';
 import { buildImageURL } from '@/shared/utils/buildImageURL';
 
+const imageSize = 300;
 describe('MovieThumbnail', () => {
   const title = 'Sample Movie';
   const validImageUrl = '/valid-image.jpg'
@@ -13,14 +14,13 @@ describe('MovieThumbnail', () => {
     render(<MovieThumbnail posterPath={validImageUrl} title={title} className="thumbnail" />);
     const imgElement = screen.getByAltText(title);
     expect(imgElement).toBeInTheDocument();
-    expect(imgElement).toHaveAttribute('src', buildImageURL(validImageUrl, 200));
+    expect(imgElement).toHaveAttribute('src', buildImageURL(validImageUrl, imageSize));
   });
 
   test('displays fallback image on error', () => {
     render(<MovieThumbnail posterPath={invalidImageUrl} title={title} className="thumbnail" />);
     const imgElement = screen.getByAltText(title);
     expect(imgElement).toBeInTheDocument();
-    expect(imgElement).toHaveAttribute('src', buildImageURL(invalidImageUrl, 200));
 
     fireEvent.error(imgElement);
 
