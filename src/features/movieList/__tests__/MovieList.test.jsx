@@ -1,40 +1,58 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { vi } from 'vitest';
-import MovieList from '../ui/MovieList';
-import { afterEach } from 'vitest';
-import useMovies from '../hooks/useMovies';
+import { Provider } from 'react-redux';
+import { vi, afterEach } from 'vitest';
 
-vi.mock('../hooks/useSearch', () => ({
-  default: () => ({
-    query: '',
-    debouncedQuery: '',
-    setQuery: vi.fn(),
-  }),
-}));
+import MovieList from '../ui/MovieList';
+import useMovies from '../hooks/useMovies';
+import { configureStore } from '@reduxjs/toolkit';
+import searchReducer from '@/features/searchInput/lib/searchSlice';
 
 vi.mock('../hooks/useMovies');
 
+const renderHookWithProvider = (store) => {
+  return renderHook(() => useSearch(), {
+    wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+  });
+};
+
 describe('MovieList behavior', () => {
+  let store;
+
+  beforeEach(() => {
+    store = configureStore({
+      reducer: {
+        search: searchReducer,
+      },
+      preloadedState: {
+        search: { query: 'test', debouncedQuery: 'test' },
+      },
+    });
+  });
+
+
   afterEach(() => {
     vi.clearAllMocks();
   });
 
   test('displays movies when data is available', () => {
     vi.mocked(useMovies).mockReturnValue({
-        movies: [
-          { id: 1, title: 'Movie 1' },
-          { id: 2, title: 'Movie 2' },
-        ],
-        totalPages: 1,
-        loading: false,
-        error: null,
+      movies: [
+        { id: 1, title: 'Movie 1' },
+        { id: 2, title: 'Movie 2' },
+      ],
+      totalPages: 1,
+      loading: false,
+      error: null,
     });
 
     render(
-      <MemoryRouter>
-        <MovieList />
-      </MemoryRouter>);
+      <Provider store={store}>
+        <MemoryRouter>
+          <MovieList />
+        </MemoryRouter>
+      </Provider>
+    );
 
     expect(screen.getByText('Movie 1')).toBeInTheDocument();
     expect(screen.getByText('Movie 2')).toBeInTheDocument();
@@ -46,8 +64,15 @@ describe('MovieList behavior', () => {
         totalPages: 1,
         loading: false,
         error: null,
-      })
-    render(<MovieList />);
+      });
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <MovieList />
+        </MemoryRouter>
+      </Provider>
+    );
     expect(screen.getByText('No movies found')).toBeInTheDocument();
   });
 
@@ -60,9 +85,12 @@ describe('MovieList behavior', () => {
     });
 
     render(
-      <MemoryRouter>
-        <MovieList />
-      </MemoryRouter>);
+      <Provider store={store}>
+        <MemoryRouter>
+          <MovieList />
+        </MemoryRouter>
+      </Provider>
+    );
     expect(screen.getByText('Failed to fetch movies')).toBeInTheDocument();
   });
 
@@ -74,7 +102,13 @@ describe('MovieList behavior', () => {
         error: null,
       });
 
-    render(<MovieList />);
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <MovieList />
+          </MemoryRouter>
+        </Provider>
+      );
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
