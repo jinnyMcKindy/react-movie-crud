@@ -9,31 +9,31 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
   title,
   className,
 }) => {
-  const [error, onError] = useState(false);
+  const [error, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const url = (imageSize: number) => error ? fallbackUrl : buildImageURL(posterPath, imageSize);
 
-  const setSrc = () => {
-    return error ? fallbackUrl : buildImageURL(posterPath, 200);
-  }
   return (
-    <picture>
-      <source
-        media="(max-width: 480px)"
-        srcSet={buildImageURL(posterPath, 500)}
-      />
-      <source
-        media="(max-width: 768px)"
-        srcSet={buildImageURL(posterPath, 400)}
-      />
-      <img
-        src={setSrc()}
-        alt={title}
-        className={className}
-        onError={() => {
-          onError(true);
-        }}
-      />
-    </picture>
-
+    <>
+        <picture>
+        {isLoading && <div className="movie-thumbnail__loading">Loading...</div>}
+         <source
+            media="(max-width: 480px)"
+            srcSet={url(500)}
+          />
+          <source
+            media="(max-width: 768px)"
+            srcSet={url(400)}
+          />
+          <img
+            src={url(300)}
+            alt={title}
+            className={className}
+            onLoad={() => setIsLoading(false)}
+            onError={() => setHasError(true)}
+          />
+        </picture>
+    </>
   );
 };
 
