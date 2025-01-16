@@ -18,12 +18,6 @@ export interface MovieState {
     error: string | null;
 }
 
-export interface UseSearchReturn {
-    query: string;
-    debouncedQuery: string;
-    setQuery: React.Dispatch<React.SetStateAction<string>>;
-};
-
 export interface FetchMoviesParams {
     page: number;
     query: string;

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 interface SearchInputProps {
   query: string;
-  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  setQuery: (query: string) => void;
 }
 
 const SearchInput: React.FC<SearchInputProps> = React.memo(({ query, setQuery }) => {

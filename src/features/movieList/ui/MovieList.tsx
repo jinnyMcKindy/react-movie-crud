@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import MoviePreview from '@/entities/Movie/ui/MoviePreview/MoviePreview';
 import Pagination  from '@/features/pagination';
 import SearchInput  from '@/features/searchInput';
-import useSearch from '../hooks/useSearch';
+import useSearch from '@/features/searchInput/hooks/useSearch';
 import useMovies from '../hooks/useMovies';
 import Loading from '@/shared/components/loading';
 import Error from '@/shared/components/error';
@@ -11,7 +11,7 @@ import './MovieList.scss';
 
 const MovieList: React.FC = React.memo(() => {
   const [currentPage, setCurrentPage] = useState(1);
-  const { query, debouncedQuery, setQuery } = useSearch('');
+  const { query, debouncedQuery, updateQuery } = useSearch();
   const { movies, totalPages, loading, error } = useMovies(currentPage, debouncedQuery);
   const moviePreviews = useMemo(() => {
     return movies.map((movie: Movie) => (
@@ -22,7 +22,7 @@ const MovieList: React.FC = React.memo(() => {
   return (
     <div className="movie-list">
       <h1 className="movie-list__title">Movie List</h1>
-      <SearchInput query={query} setQuery={setQuery} />
+      <SearchInput query={query} setQuery={updateQuery} />
       <div className="movie-list__content">
         {loading ? (
             <Loading />

@@ -12,7 +12,7 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
   const [error, onError] = useState(false);
 
   const setSrc = () => {
-    return error ? fallbackUrl : buildImageURL(posterPath, 300);
+    return error ? fallbackUrl : buildImageURL(posterPath, 200);
   }
   return (
     <picture>
@@ -23,10 +23,6 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
       <source
         media="(max-width: 768px)"
         srcSet={buildImageURL(posterPath, 400)}
-      />
-      <source
-        media="(max-width: 1200px)"
-        srcSet={buildImageURL(posterPath, 200)}
       />
       <img
         src={setSrc()}

@@ -19,21 +19,19 @@ const Pagination: React.FC<PaginationProps> = React.memo(({ currentPage, totalPa
   return (
   <div className="movie-list__pagination">
     <button
-    onClick={goToPreviousPage}
-    disabled={currentPage === 1}
-    className="movie-list__pagination-button"
-    >
-    Previous
+      onClick={goToPreviousPage}
+      disabled={currentPage === 1}
+      className="movie-list__pagination-button">
+        Previous
     </button>
     <span className="movie-list__pagination-info">
-    Page {currentPage} of {totalPages}
+      Page {currentPage} of {totalPages}
     </span>
     <button
-    onClick={goToNextPage}
-    disabled={currentPage === totalPages}
-    className="movie-list__pagination-button"
-    >
-    Next
+      onClick={goToNextPage}
+      disabled={currentPage === totalPages}
+      className="movie-list__pagination-button">
+        Next
     </button>
   </div>
   );
