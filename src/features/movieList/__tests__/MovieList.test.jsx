@@ -10,19 +10,13 @@ import searchReducer from '@/features/searchInput/lib/searchSlice';
 
 vi.mock('../hooks/useMovies');
 
-const renderHookWithProvider = (store) => {
-  return renderHook(() => useSearch(), {
-    wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
-  });
-};
-
 describe('MovieList behavior', () => {
   let store;
 
   beforeEach(() => {
     store = configureStore({
       reducer: {
-        search: searchReducer,
+        search: searchReducer
       },
       preloadedState: {
         search: { query: 'test', debouncedQuery: 'test' },
