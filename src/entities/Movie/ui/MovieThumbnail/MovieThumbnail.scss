@@ -5,6 +5,18 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 
+  &__loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 200%;
+    backdrop-filter: blur(10px);
+  }
+
+  &__picture {
+    position: relative;
+  }
+
   &:hover {
     transform: scale(1.05);
   }

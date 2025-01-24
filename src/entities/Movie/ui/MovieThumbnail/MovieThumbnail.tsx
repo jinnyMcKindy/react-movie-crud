@@ -15,8 +15,8 @@ const MovieThumbnail: React.FC<MovieThumbnailProps> = ({
 
   return (
     <>
-        <picture>
-        {isLoading && <div className="movie-thumbnail__loading">Loading...</div>}
+        <picture className='movie-thumbnail__picture'>
+        {isLoading && <div className="movie-thumbnail__loading"></div>}
          <source
             media="(max-width: 480px)"
             srcSet={url(500)}
