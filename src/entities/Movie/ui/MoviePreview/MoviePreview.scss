@@ -13,6 +13,7 @@
     box-shadow: $box-shadow;
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
+    min-height: 297px;
 
     &:hover {
       transform: scale(1.05);

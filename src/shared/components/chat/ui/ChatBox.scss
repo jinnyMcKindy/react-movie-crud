@@ -1,0 +1,120 @@
+.chat-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 16px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f9;
+    overflow: hidden;
+}
+
+.chat-container.collapsed {
+    margin-right: -100%;
+}
+
+.chat-container.expanded {
+    height: 600px;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.expand-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+.close-icon {
+    position: fixed;
+    right: 0;
+    margin-top: -37px;
+}
+
+.messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding-right: 10px;
+}
+
+.message {
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.message.ai {
+    align-self: flex-start;
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.input-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #007bff;
+}
+
+.send-button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+
+.loading {
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+    color: #888;
+}

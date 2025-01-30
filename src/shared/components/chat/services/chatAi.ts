@@ -3,6 +3,7 @@ import { OPENAI } from "@/shared/apiConstants";
 
 const openai = new OpenAI({
     apiKey: OPENAI,
+    dangerouslyAllowBrowser: true
 });
 
 export const getChatResponse = async (message: string): Promise<string> => {

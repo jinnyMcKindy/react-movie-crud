@@ -7,7 +7,7 @@ type MessageProps = {
 
 const Message: React.FC<MessageProps> = ({ sender, text }) => (
     <div className={`message ${sender}`}>
-        <p>{text}</p>
+        {text}
     </div>
 );
 
